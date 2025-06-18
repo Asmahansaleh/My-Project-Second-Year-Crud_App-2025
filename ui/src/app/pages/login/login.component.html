@@ -1,0 +1,19 @@
+<body class="d-flex justify-content-center align-items-center vh-100" style="background-color: #f8f9fa;">
+    <div class="card shadow p-4" style="width: 350px;">
+        <h3 class="text-center mb-3"><i style="color: red;">Crud System</i></h3>
+        <!-- <form> -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control"  placeholder="Enter email" required [(ngModel)]="loginData.username">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" placeholder="Enter password" required [(ngModel)]="loginData.password">
+            </div>
+            <button class="btn btn-primary w-100" (click)="login()" [disabled]="!loginData.password || !loginData.username" >Login</button>
+        <!-- </form> -->
+        <div class="text-center mt-3">
+            <a >Forgot password?</a>
+        </div>
+    </div>
+</body>
