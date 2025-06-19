@@ -11,19 +11,21 @@
          <!-- <input type="text" class="form-control" placeholder="Add Categories" [(ngModel)]="Categories.category_name"> -->
                <input type="text" class="form-control" placeholder="Full Name" [(ngModel)]="Crud.full_name">
        </div>
-         <div class="col-md-4">
-          <select class="form-control" name="" id=""  [(ngModel)]="Crud.gender">
-            <option value="disabled">--Select Gender--</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
-        </div>
+          <div class="col-md-4">
+        <select class="form-control" [(ngModel)]="Crud.gender" name="gender" required>
+          <option value="" disabled selected>--Select Gender--</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+
         <div class="col-md-4">
                <input type="text" class="form-control" placeholder="Address"  [(ngModel)]="Crud.address">
        </div>
-       <hr>
+       <!-- <hr> -->
       
       </div>
+      <hr>
       <div class="row">
            <div class="col-md-4">
           <label for="">Date Of Birth</label>
@@ -35,7 +37,9 @@
           <div class="col-md-6">
        
          <!-- <button class="btn btn-success" (click)="saveCategories()" [disabled]="!Categories.category_name">Save</button> -->
-        <button class="btn btn-success" (click)="saveCrud()"  >Save</button>
+        <button *ngIf="showSave" class="btn btn-success" (click)="saveCrud()"  >Save</button>
+         <button *ngIf="showUpdate"  class="btn btn-primary" (click)="updateCrud()"  >Update</button>
+
 
        </div>
       </div>
@@ -64,8 +68,17 @@
                 <a class="btn btn-primary">Update</a>
               </td>
             </tr> -->
-            <tr>
-              <td></td>
+            <tr *ngFor="let item of Data; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{item.full_name}}</td>
+              <td>{{item.gender}}</td>
+              <td>{{item.dob}}</td>
+              <td>{{item.address}}</td>
+              <td>
+                <button class="btn btn-primary" (click)="update(item)">Update</button>
+                <button class="btn btn-danger" (click)="delete(item.crud_id)">Delete</button>
+              </td>
+              
             </tr>
           </tbody>          
         </table>

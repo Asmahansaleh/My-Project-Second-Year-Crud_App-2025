@@ -16,4 +16,12 @@ export class CrudServicesService {
     getData(): Observable<any>{
     return this.http.get(this.crud+"/getData")
   }
+
+  delete(id:any):Observable<any>{
+    return this.http.delete(this.crud+"/"+id ,{ responseType: 'text' })
+  }
+
+   update(id:any,data:any):Observable<any>{
+    return this.http.put(this.crud+"/"+id ,data)
+  }
 }
